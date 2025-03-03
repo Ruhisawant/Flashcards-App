@@ -72,14 +72,12 @@ const App = () => {
     setCurrentCard(randomIndex);
     setIsFlipped(false);
   }
-  
 
   return (
     <div className='App'>
       <div className='title'>Riddle Quest</div>
-      <div className='subtitle'>Fun Brain teasers</div>
+      <div className='subtitle'>Test Your Wits with Fun and Tricky Riddles!</div>
       <h3>Number of Cards: 10</h3>
-      <br />
 
       <div className='cards-container'>
         <div className='card' onClick={flipCard} style={{ backgroundColor: `#${shuffledCards[currentCard].color}` }}>
