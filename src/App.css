@@ -5,38 +5,65 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.title {
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  padding-bottom: 70px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
-  padding: 2em;
+  width: 350px;
+  height: 600px;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0;
 }
 
-.read-the-docs {
-  color: #888;
+.card-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 40px;
+  font-weight: bold;
+  padding: 25px 0;
+  color: black;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  padding: 10px 20px;
+  color: black;
+}
+
+.card-button {
+  display: inline-block;
+  background-color: orange;
+  color: white;
+  border: none;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-button:hover {
+  background-color: #FF6A00;
+  color: white;
 }
