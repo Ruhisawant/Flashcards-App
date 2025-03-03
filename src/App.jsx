@@ -2,19 +2,30 @@ import { useState } from 'react'
 import './App.css'
 
 const App = () => {
-  isFlipped = false
 
-  const salonData = [
+  const cards = [
     {
-      img: 'https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      title: 'Salons by JC',
-      subtitle: 'Providing high-quality beauty services in a modern, luxurious environment.',
-      link: 'https://salonsbyjc.com/salon-services/'
+      front: 'Salons by JC',
+      back: 'back',
     },
   ]
   
+
+  const [currentCard, setCurrentCard] = useState(0)
+  const [isFlipped, setIsFlipped] = useState(false)
+  
   const flipCard = () => {
-    isFlipped = !isFlipped
+    setIsFlipped(!isFlipped)
+    if (isFlipped) {
+      text = cards[currentCard].back
+    }
+    else {
+      text = cards[currentCard].front
+    }
+  }
+
+  const nextCard = () => {
+    setCurrentCard(currentCard + 1)
   }
 
   return (
@@ -22,19 +33,16 @@ const App = () => {
       <div className='title'>Logos</div>
 
       <div className='cards-container'>
-        {salonData.map((salon, index) => (
-          <div className='card' key={index}>
-            <img className='card-img' src={salon.img} alt={`Image of ${salon.title}`} />
-            <div className='card-title'>{salon.title}</div>
-            <div className='card-subtitle'>{salon.subtitle}</div>
-            <a className='card-button' href={salon.link} target='_blank' rel='noopener noreferrer'>
-              View Services
-            </a>
-          </div>
-        ))}
+        <div className='card' onClick={flipCard}>
+        {isFlipped ? (
+          <div className='card-front-txt'>{cards[currentCard].back}</div>
+        ) : (
+          <div className='card-front-txt'>{cards[currentCard].front}</div>
+        )}
+        </div>
       </div>
 
-      <button>next</button>
+      <button onClick={nextCard}>next</button>
     </div>
   )
 }
