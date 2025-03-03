@@ -2,9 +2,6 @@ import { useState } from 'react'
 import './App.css'
 
 const App = () => {
-  const [currentCard, setCurrentCard] = useState(0)
-  const [isFlipped, setIsFlipped] = useState(false)
-
   const cards = [
     {
       front: 'I am always hungry and will die if not fed, but whatever I touch will soon turn red. What am I?',
@@ -19,7 +16,7 @@ const App = () => {
     {
       front: 'A girl has as many brothers as sisters, but each brother has only half as many brothers as sisters. How many brothers and sisters are there in the family?',
       back: 'Four sisters and three brothers',
-      color: 'yello',
+      color: 'yellow',
     },
     {
       front: 'What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?',
@@ -57,32 +54,30 @@ const App = () => {
       color: 'red',
     },
   ]
-  
+
+  const initialShuffledCards = [...cards].sort(() => Math.random() - 0.5)
+  const [shuffledCards] = useState(initialShuffledCards)
+  const [currentCard, setCurrentCard] = useState(0)
+  const [isFlipped, setIsFlipped] = useState(false)
+
   const flipCard = () => {
     setIsFlipped(!isFlipped)
-    if (isFlipped) {
-      text = cards[currentCard].back
-    } else {
-      text = cards[currentCard].front
-    }
   }
 
   const nextCard = () => {
-    setCurrentCard(currentCard + 1)
+    setCurrentCard((prev) => (prev + 1) % shuffledCards.length)
     setIsFlipped(false)
   }
 
   return (
     <div className='App'>
-      <div className='title'>Guess the Logo</div>
+      <div className='title'>Riddle Quest</div>
 
       <div className='cards-container'>
-        <div className='card' onClick={flipCard} style={{ backgroundColor: cards[currentCard].color }}>
-        {isFlipped ? (
-          <div className='card-txt'>{cards[currentCard].back}</div>
-        ) : (
-          <div className='card-txt'>{cards[currentCard].front}</div>
-        )}
+        <div className='card' onClick={flipCard} style={{ backgroundColor: shuffledCards[currentCard].color }}>
+          <div className='card-text'>
+            {isFlipped ? shuffledCards[currentCard].back : shuffledCards[currentCard].front}
+          </div>
         </div>
       </div>
 
