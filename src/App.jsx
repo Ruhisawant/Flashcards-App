@@ -6,52 +6,52 @@ const App = () => {
     {
       front: 'I am always hungry and will die if not fed, but whatever I touch will soon turn red. What am I?',
       back: 'Fire',
-      color: 'red',
+      color: 'ff6961',
     },
     {
       front: 'With pointed fangs I sit and wait; with piercing force I crunch out fate; grabbing victims, proclaiming might; physically joining with a single bite. What am I?',
       back: 'A stapler',
-      color: 'green',
+      color: 'ff6961',
     },
     {
       front: 'A girl has as many brothers as sisters, but each brother has only half as many brothers as sisters. How many brothers and sisters are there in the family?',
       back: 'Four sisters and three brothers',
-      color: 'yellow',
+      color: 'f8d66d',
     },
     {
       front: 'What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?',
       back: 'A river',
-      color: 'red',
+      color: 'ff6961',
     },
     {
       front: 'What can fill a room but takes up no space?',
       back: 'Light',
-      color: 'green',
+      color: 'ff6961',
     },
     {
       front: 'Two in a corner, one in a room, zero in a house, but one in a shelter. What is it?',
       back: 'The letter R',
-      color: 'yellow',
+      color: '8cd47e',
     },
     {
-      front: 'I turn once, what is out will not get in. I turn again, what is in will not get out. What am I?',
-      back: 'A key',
-      color: 'red',
+      front: 'The day before yesterday I was 21, and next year I will be 24. When is my birthday?',
+      back: 'December 31st - today is January 1st',
+      color: 'f8d66d',
     },
     {
       front: 'What breaks yet never falls, and what falls yet never breaks?',
       back: 'Day breaks and night falls',
-      color: 'green',
+      color: '8cd47e',
     },
     {
       front: 'What goes through cities and fields, but never moves?',
       back: 'A road',
-      color: 'yellow',
+      color: '8cd47e',
     },
     {
       front: 'Mary has four daughters, and each of her daughters has a brother. How many children does Mary have?',
       back: 'Five - each daughter has the same brother.',
-      color: 'red',
+      color: 'f8d66d',
     },
   ]
 
@@ -65,16 +65,24 @@ const App = () => {
   }
 
   const nextCard = () => {
-    setCurrentCard((prev) => (prev + 1) % shuffledCards.length)
-    setIsFlipped(false)
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * shuffledCards.length);
+    } while (randomIndex === currentCard);
+    setCurrentCard(randomIndex);
+    setIsFlipped(false);
   }
+  
 
   return (
     <div className='App'>
       <div className='title'>Riddle Quest</div>
+      <div className='subtitle'>Fun Brain teasers</div>
+      <h3>Number of Cards: 10</h3>
+      <br />
 
       <div className='cards-container'>
-        <div className='card' onClick={flipCard} style={{ backgroundColor: shuffledCards[currentCard].color }}>
+        <div className='card' onClick={flipCard} style={{ backgroundColor: `#${shuffledCards[currentCard].color}` }}>
           <div className='card-text'>
             {isFlipped ? shuffledCards[currentCard].back : shuffledCards[currentCard].front}
           </div>
