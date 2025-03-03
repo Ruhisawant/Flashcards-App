@@ -59,7 +59,7 @@ const App = () => {
 
   const nextCard = () => {
     setCurrentCard(currentCard + 1)
-    setIsFlipped(!isFlipped)
+    setIsFlipped(false)
   }
 
   return (
